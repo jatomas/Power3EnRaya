@@ -1,0 +1,359 @@
+GameScreen As screen:
+    Fill: =RGBA(55, 195, 222, 1)
+    OnVisible: |-
+        =LoadData(RankingCollection, "Ranking", true);
+        Select(InitializeGameButton)
+
+    TitleLabel_1 As label:
+        Align: =Align.Center
+        Color: =RGBA(225, 89, 101, 1)
+        Font: =Font.Lato
+        FontWeight: =FontWeight.Semibold
+        Height: =106
+        Size: =80
+        Text: ="POWER 3 EN RAYA"
+        Width: =1243
+        X: =76
+        ZIndex: =1
+
+    BoardBackground As rectangle:
+        BorderColor: =RGBA(107, 4, 13, 1)
+        BorderThickness: =1
+        Fill: =RGBA(225, 89, 101, 1)
+        Height: =500
+        Width: =500
+        X: =76
+        Y: =186
+        ZIndex: =2
+
+    GameBoard As image:
+        Height: =500
+        Image: =tablero
+        Width: =500
+        X: =76
+        Y: =186
+        ZIndex: =3
+
+    Box1_1 As image:
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If (MoveCount < 9 && Winner = 0, DisplayMode.Edit, DisplayMode.Disabled)
+        Image: =Switch(Value11, 0, casilla_vacia, 1, circulo, 2, cruz)
+        OnSelect: =If (Value11 = 0, Set(Value11, Turn);If(Turn = 1, Set(Turn,2),Set(Turn,1));Select(WinnerButton))
+        X: =111
+        Y: =225
+        ZIndex: =4
+
+    Box1_2 As image:
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If (MoveCount < 9 && Winner = 0, DisplayMode.Edit, DisplayMode.Disabled)
+        Image: =Switch(Value12, 0, casilla_vacia, 1, circulo, 2, cruz)
+        OnSelect: |-
+            =If (
+                Value12 = 0,
+                Set(
+                    Value12,
+                    Turn
+                );
+                If(
+                    Turn = 1,
+                    Set(
+                        Turn,
+                        2
+                    ),
+                    Set(
+                        Turn,
+                        1
+                    )
+                );
+                Select(WinnerButton)
+            )
+        X: =276
+        Y: =225
+        ZIndex: =5
+
+    Box1_3 As image:
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If (MoveCount < 9 && Winner = 0, DisplayMode.Edit, DisplayMode.Disabled)
+        Image: =Switch(Value13, 0, casilla_vacia, 1, circulo, 2, cruz)
+        OnSelect: =If (Value13 = 0, Set(Value13, Turn);If(Turn = 1, Set(Turn,2),Set(Turn,1));Select(WinnerButton))
+        X: =442
+        Y: =225
+        ZIndex: =6
+
+    Box2_1 As image:
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If (MoveCount < 9 && Winner = 0, DisplayMode.Edit, DisplayMode.Disabled)
+        Image: =Switch(Value21, 0, casilla_vacia, 1, circulo, 2, cruz)
+        OnSelect: =If (Value21 = 0, Set(Value21, Turn);If(Turn = 1, Set(Turn,2),Set(Turn,1));Select(WinnerButton))
+        X: =111
+        Y: =386
+        ZIndex: =7
+
+    Box2_2 As image:
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If (MoveCount < 9 && Winner = 0, DisplayMode.Edit, DisplayMode.Disabled)
+        Image: =Switch(Value22, 0, casilla_vacia, 1, circulo, 2, cruz)
+        OnSelect: =If (Value22 = 0, Set(Value22, Turn);If(Turn = 1, Set(Turn,2),Set(Turn,1));Select(WinnerButton))
+        X: =276
+        Y: =386
+        ZIndex: =8
+
+    Box2_3 As image:
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If (MoveCount < 9 && Winner = 0, DisplayMode.Edit, DisplayMode.Disabled)
+        Image: =Switch(Value23, 0, casilla_vacia, 1, circulo, 2, cruz)
+        OnSelect: =If (Value23 = 0, Set(Value23, Turn);If(Turn = 1, Set(Turn,2),Set(Turn,1));Select(WinnerButton))
+        X: =442
+        Y: =386
+        ZIndex: =9
+
+    Box3_1 As image:
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If (MoveCount < 9 && Winner = 0, DisplayMode.Edit, DisplayMode.Disabled)
+        Image: =Switch(Value31, 0, casilla_vacia, 1, circulo, 2, cruz)
+        OnSelect: =If (Value31 = 0, Set(Value31, Turn);If(Turn = 1, Set(Turn,2),Set(Turn,1));Select(WinnerButton))
+        X: =111
+        Y: =557
+        ZIndex: =10
+
+    Box3_2 As image:
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If (MoveCount < 9 && Winner = 0, DisplayMode.Edit, DisplayMode.Disabled)
+        Image: =Switch(Value32, 0, casilla_vacia, 1, circulo, 2, cruz)
+        OnSelect: =If (Value32 = 0, Set(Value32, Turn);If(Turn = 1, Set(Turn,2),Set(Turn,1));Select(WinnerButton))
+        X: =276
+        Y: =557
+        ZIndex: =11
+
+    Box3_3 As image:
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If (MoveCount < 9 && Winner = 0, DisplayMode.Edit, DisplayMode.Disabled)
+        Image: =Switch(Value33, 0, casilla_vacia, 1, circulo, 2, cruz)
+        OnSelect: =If (Value33 = 0, Set(Value33, Turn);If(Turn = 1, Set(Turn,2),Set(Turn,1));Select(WinnerButton))
+        X: =442
+        Y: =557
+        ZIndex: =12
+
+    Player1TextInput_1 As text:
+        BorderColor: =RGBA(225, 89, 101, 1)
+        BorderThickness: =4
+        Color: =RGBA(225, 89, 101, 1)
+        Default: =Player1TextInput.Text
+        DisplayMode: =DisplayMode.View
+        Height: =62
+        HintText: =""
+        HoverBorderColor: =RGBA(225, 89, 101, 1)
+        HoverFill: =RGBA(225, 89, 101, 0.52)
+        Size: =20
+        Width: =285
+        X: =1009
+        Y: =186
+        ZIndex: =13
+
+    Player2TextInput_1 As text:
+        BorderColor: =RGBA(225, 89, 101, 1)
+        BorderThickness: =4
+        Color: =RGBA(225, 89, 101, 1)
+        Default: =Player2TextInput.Text
+        DisplayMode: =DisplayMode.View
+        Height: =62
+        HintText: =""
+        HoverBorderColor: =RGBA(225, 89, 101, 1)
+        HoverFill: =RGBA(225, 89, 101, 0.52)
+        Size: =20
+        Width: =285
+        X: =1009
+        Y: =286
+        ZIndex: =14
+
+    Icon1 As icon.LightningBolt:
+        BorderColor: =RGBA(253, 194, 76, 1)
+        Color: =RGBA(253, 194, 76, 1)
+        Height: =50
+        Icon: =Icon.LightningBolt
+        Visible: =Turn = 1
+        Width: =50
+        X: =1306
+        Y: =188
+        ZIndex: =15
+
+    Icon1_1 As icon.LightningBolt:
+        BorderColor: =RGBA(253, 194, 76, 1)
+        Color: =RGBA(253, 194, 76, 1)
+        Height: =50
+        Icon: =Icon.LightningBolt
+        Visible: =Turn = 2
+        Width: =50
+        X: =1306
+        Y: =292
+        ZIndex: =16
+
+    Image3 As image:
+        Height: =60
+        Image: =trofeo
+        Visible: =Winner = 1
+        Width: =60
+        X: =937
+        Y: =190
+        ZIndex: =18
+
+    Image3_1 As image:
+        Height: =60
+        Image: =trofeo
+        Visible: =Winner = 2
+        Width: =60
+        X: =937
+        Y: =292
+        ZIndex: =19
+
+    WinnerButton As button:
+        OnSelect: |
+            =If (Value11 = Value12 && Value11 = Value13 && Value11 <> 0, Set(Winner, Value11));
+            If (Value21 = Value22 && Value21 = Value23 && Value21 <> 0, Set(Winner, Value21));
+            If (Value31 = Value32 && Value31 = Value33 && Value31 <> 0, Set(Winner, Value31));
+            If (Value11 = Value21 && Value11 = Value31 && Value11 <> 0, Set(Winner, Value11));
+            If (Value12 = Value22 && Value12 = Value32 && Value12 <> 0, Set(Winner, Value12));
+            If (Value13 = Value23 && Value13 = Value33 && Value13 <> 0, Set(Winner, Value13));
+            If (Value11 = Value22 && Value11 = Value33 && Value11 <> 0, Set(Winner, Value11));
+            If (Value13 = Value22 && Value13 = Value31 && Value13 <> 0, Set(Winner, Value13));
+            Set(MoveCount, MoveCount+1);
+            If (Winner <> 0,Collect(RankingCollection,{Nombre:If(Winner = 1, Player1TextInput.Text, Winner = 2, Player2TextInput.Text), Movimientos:MoveCount});
+            SaveData(RankingCollection, "Ranking"));
+        Text: ="Botón"
+        Visible: =false
+        X: =3
+        Y: =728
+        ZIndex: =20
+
+    WinnerGif As image:
+        Height: =168
+        Image: =winner
+        Visible: =Winner <> 0
+        Width: =296
+        X: =610
+        Y: =191
+        ZIndex: =21
+
+    NewGameButton As button:
+        Fill: =RGBA(225, 89, 101, 1)
+        Height: =100
+        HoverFill: =ColorFade(RGBA(255, 89, 101, 100), -20%)
+        OnSelect: |-
+            =Select(InitializeGameButton);
+            Set(ResetTimer,true); Set(ResetTimer,false); Set(AutoStart,true)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =20
+        Text: ="Nueva partida"
+        Width: =150
+        X: =587
+        Y: =476
+        ZIndex: =22
+
+    BackButton As button:
+        Fill: =RGBA(225, 89, 101, 1)
+        Height: =100
+        HoverFill: =ColorFade(RGBA(255, 89, 101, 100), -20%)
+        OnSelect: =Back()
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =20
+        Text: |-
+            ="Volver a inicio
+            "
+        Width: =150
+        X: =587
+        Y: =586
+        ZIndex: =23
+
+    InitializeGameButton As button:
+        OnSelect: |-
+            =// Inicializar valores de casillas
+            Set(Value11,0);
+            Set(Value12,0);
+            Set(Value13,0);
+            Set(Value21,0);
+            Set(Value22,0);
+            Set(Value23,0);
+            Set(Value31,0);
+            Set(Value32,0);
+            Set(Value33,0);
+            
+            // Inicializar turno
+            Set(Turn,1);
+            
+            // Inicializar ganador
+            Set(Winner,0);
+            
+            // Inicializar contador de movimientos
+            Set(MoveCount,0)
+        Text: ="Botón"
+        Visible: =false
+        X: =196
+        Y: =728
+        ZIndex: =24
+
+    RankingTable As dataTable.datatable:
+        BorderColor: =RGBA(225, 89, 101, 1)
+        BorderStyle: =BorderStyle.Solid
+        DisplayMode: =DisplayMode.Edit
+        Fill: =RGBA(0, 0, 0, 0)
+        HeadingFill: =RGBA(225, 89, 101, 1)
+        Height: =302
+        Items: =RankingCollection
+        SelectedFill: =RGBA(225, 89, 101, 1)
+        Width: =587
+        X: =768
+        Y: =386
+        ZIndex: =26
+
+        Nombre_Columna1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Nombre"
+            FieldName: ="Nombre"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =1
+            Text: =ThisItem.Nombre
+            Width: =193
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+        Movimientos_Columna1 As dataTableColumn.textualColumn:
+            DisplayMode: =DisplayMode.Edit
+            FieldDisplayName: ="Movimientos"
+            FieldName: ="Movimientos"
+            FieldVariantName: ="textualColumn"
+            Height: =Parent.Height
+            LayoutHeight: =Parent.Height
+            Order: =2
+            Text: =ThisItem.Movimientos
+            Width: =100
+            X: =0
+            Y: =0
+            ZIndex: =2
+
+    SadGif As image:
+        Height: =168
+        Image: =empate
+        Visible: =MoveCount = 9 && Winner = 0
+        Width: =296
+        X: =610
+        Y: =191
+        ZIndex: =27
+
